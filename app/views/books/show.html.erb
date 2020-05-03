@@ -1,6 +1,6 @@
-
-<div class="row">
-	<div class="col-xs-3">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
 
 		<h2>User info</h2>
 		<%= render 'users/profile' %>
@@ -16,10 +16,10 @@
 		<table class="table">
 				<tr>
 					<td>
-						<%= link_to (@book.user) do %>
+						
 						<%= attachment_image_tag(@bookd.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-						<%= @bookd.user.name %>
-						<% end %>
+						<%= link_to @bookd.user.name, user_path(@bookd.user) %>
+					
 					</td>
 					<td><%= link_to @bookd.title, @book %></td>
 					<td><%= @bookd.body %></td>
@@ -30,6 +30,7 @@
 				</tr>
 			</table>
 
+	</div>
 	</div>
 </div>
 
