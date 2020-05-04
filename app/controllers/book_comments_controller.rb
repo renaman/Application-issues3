@@ -7,10 +7,12 @@ class BookCommentsController < ApplicationController
 		redirect_to book_path(book)
 	end
 	def destroy
-		book = Book.find(params[:book_id])
-		comment = current_user.book_comments.find_by?(book_id: book.id)
+		comment = BookComment.find(params[:book_id])
+		if comment.user != current_user
+			redirect_to request.referer
+		end
 		comment.destroy
-		redirect_to book_path(book)
+		redirect_to request.referer
 	end
 	private
 	def book_comment_params

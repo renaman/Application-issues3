@@ -32,7 +32,7 @@
 							<%= @bookd.favorites.count %>
 						<% else %>
 							<%= link_to book_favorites_path(@bookd), method: :post do %>
-								<i class="fa fa-heart" area-hidden="true" style="color: red;">
+								<i class="fa fa-heart-o" area-hidden="true" style="color: red;">
 								</i>
 							<% end %>
 							<%= @bookd.favorites.count %>
@@ -63,8 +63,13 @@
 			<ol>
 				<% @book_book_comments.each do |book_comment| %>
 				<li class="comment">
+					<%= book_comment.user.name %>
 					<div class="comment-entry"><%= book_comment.comment %>
-						<%= link_to "Destroy",book_path, method: :delete, class: "btn-sm btn-danger destroy" %>
+						<% if user_signed_in? && book_comment.user == current_user %>
+						<div class="destroy-button">
+						<%= link_to "Destroy",book_book_comments_path(book_comment), method: :delete, class: "btn-sm btn-danger destroy" %>
+						</div>
+						<% end %>
 					</div>
 				</li>
 				<% end %>

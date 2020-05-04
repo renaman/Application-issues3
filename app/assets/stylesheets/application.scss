@@ -55,3 +55,12 @@ ol {
 .destroy {
 	margin-left: 100px;
 }
+.comment {
+	position: relative;
+}
+.destroy-button {
+	display: inline-block;
+	position: absolute;
+	right: 70px;
+	bottom: 10px;
+}
