@@ -23,7 +23,19 @@ class User < ApplicationRecord
   	following_user.include?(user)
   end
 
-  
+  def User.search(content, model, how)
+  		if how == 'match'
+  			User.where(name: content)
+  		elsif how  == 'foward'
+  			User.where("name LIKE?", "#{content}%")
+  		elsif how == 'backward'
+  			User.where("name LIKE?", "%#{content}")
+  		elsif how == 'partical'
+  			User.where("name LIKE?", "%#{content}%")
+  		else
+  			User.all
+  		end
+  end
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name,presence: true, length: {maximum: 20, minimum: 2}
