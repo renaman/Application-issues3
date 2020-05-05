@@ -1,0 +1,14 @@
+	<ol>
+		<% comments.each do |book_comment| %>
+			<li class="comment">
+				<%= book_comment.user.name %>
+					<div class="comment-entry"><%= book_comment.comment %>
+						<% if user_signed_in? && book_comment.user == current_user %>
+							<div class="destroy-button">
+								<%= link_to "Destroy",book_book_comments_path(book_comment), method: :delete, remote: true ,class: "btn-sm btn-danger destroy" %>
+							</div>
+						<% end %>
+					</div>
+			</li>
+		<% end %>
+	</ol>
