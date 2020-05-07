@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_050147) do
+ActiveRecord::Schema.define(version: 2020_05_06_090523) do
 
   create_table "add_column_to_users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2020_05_04_050147) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -64,6 +72,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_050147) do
     t.text "introduction"
     t.string "title"
     t.string "profile_image_id"
+    t.string "prefecture_code"
+    t.string "postal_code"
+    t.string "city"
+    t.string "building"
+    t.string "street"
+    t.string "prefecture"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
